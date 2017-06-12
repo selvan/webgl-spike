@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script src="/lib/three.js"></script>
+        <script src="/lib/OrbitControls.js"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                var camera = new THREE.PerspectiveCamera( 75, window.innerWidth / window.innerHeight, 1, 1000 );
+                camera.position.z = 50;
+                                
+                var scene = new THREE.Scene();
+                
+                var length = 12, width = 8;
+
+                var shape = new THREE.Shape();
+                shape.moveTo( 0,0 );
+                shape.lineTo( 0, width );
+                shape.lineTo( length, width );
+                shape.lineTo( length, 0 );
+                shape.lineTo( 0, 0 );
+
+                var extrudeSettings = {
+                    steps: 2,
+                    amount: 5,
+                    bevelEnabled: false,
+                };
+
+                var geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
+
+                var material =  new THREE.MeshBasicMaterial({
+                                                            color: 0xfff999fff,
+                                                            wireframe: true,  
+                                                            wireframelinewidth:8 });
+
+                var mesh = new THREE.Mesh(geometry, material);
+                scene.add( mesh );
+                
+                var renderer = new THREE.WebGLRenderer();
+                renderer.setSize( window.innerWidth, window.innerHeight ) ;
+                
+                document.body.appendChild( renderer.domElement ) ;            
+
+                        
+                mesh.rotation.x = 70 * Math.PI/180;
+                mesh.rotation.y = 50 * Math.PI/180;
+
+                function render() {
+	                renderer.render( scene, camera );
+                }
+
+                var controls = new THREE.OrbitControls( camera );
+                controls.addEventListener( 'change', render );    
+                
+                render();         
+            });
+        </script>
+    </head>
+    <body>
+        
+    <body>    
+</html>
