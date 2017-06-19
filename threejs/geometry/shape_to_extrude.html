@@ -26,12 +26,17 @@
 
                 var geometry = new THREE.ExtrudeGeometry( shape, extrudeSettings );
 
+                // var material = new THREE.MeshPhongMaterial( { color: 0xffeb3b, specular: 0x111111, shininess: 200 } );
+                // var light = new THREE.DirectionalLight( 0xffffff );
+                // scene.add( light ); 
+
                 var material =  new THREE.MeshBasicMaterial({
                                                             color: 0xfff999fff,
                                                             wireframe: true,  
                                                             wireframelinewidth:8 });
 
                 var mesh = new THREE.Mesh(geometry, material);
+
                 scene.add( mesh );
                 
                 var renderer = new THREE.WebGLRenderer();
