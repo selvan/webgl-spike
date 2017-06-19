@@ -1,0 +1,5 @@
+localhost
+browse
+gzip {
+    ext .stl
+}
